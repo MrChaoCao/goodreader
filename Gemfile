@@ -40,6 +40,11 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers', '~> 1.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
