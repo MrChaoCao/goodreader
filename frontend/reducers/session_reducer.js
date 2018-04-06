@@ -4,7 +4,12 @@ import {
 } from '../actions/session_actions';
 
 const _nullSession = {
-  currentUser: null,
+  session: {
+    currentUser: null,
+  },
+  errors: {
+    session: ["Invald Credentials"]
+  }
 };
 
 export default(state = _nullSession, action) => {
