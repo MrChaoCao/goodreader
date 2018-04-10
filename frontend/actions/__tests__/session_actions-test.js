@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as actions from '../session_actions';
+import * as SessionActions from '../session_actions';
 import * as ApiUtil from '../../util/session_api_util'
 
 const middlewares = [thunk];
@@ -12,26 +12,26 @@ const user = {
   email: 'EmilyBronte@gondal.gov'
 }
 
-describe('simple action creators', () => {
+describe('Simple action creators', () => {
   test('receiveCurrentUser should create an action to receive current user', () => {
     const expectedAction = {
-      type: actions.RECEIVE_CURRENT_USER,
+      type: SessionActions.RECEIVE_CURRENT_USER,
       payload: user
     };
 
-    expect(actions.receiveCurrentUser(user)).toEqual(expectedAction);
+    expect(SessionActions.receiveCurrentUser(user)).toEqual(expectedAction);
   });
 
   test('logoutCurrentUser should create an action to logout current user', () => {
     const expectedAction = {
-      type: actions.LOGOUT_CURRENT_USER
+      type: SessionActions.LOGOUT_CURRENT_USER
     };
 
-    expect(actions.logoutCurrentUser(user)).toEqual(expectedAction);
+    expect(SessionActions.logoutCurrentUser(user)).toEqual(expectedAction);
   });
 });
 
-describe('asynchronous action creators', () => {
+describe('Asynchronous action creators', () => {
   beforeEach(() => {
     global.$ = require.requireMock('jquery');
     global.$.ajax = jest.fn(options => 'ajax promise');
@@ -44,7 +44,7 @@ describe('asynchronous action creators', () => {
   test('login creates RECEIVE_CURRENT_USER after posting a new Session', () => {
     const store = mockStore({ user });
     const expectedAction = [{
-        type: actions.RECEIVE_CURRENT_USER,
+        type: SessionActions.RECEIVE_CURRENT_USER,
         payload: user
       }];
 
@@ -52,7 +52,7 @@ describe('asynchronous action creators', () => {
       return Promise.resolve(user);
     });
 
-    return store.dispatch(actions.login()).then(() => {
+    return store.dispatch(SessionActions.login()).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
@@ -60,14 +60,14 @@ describe('asynchronous action creators', () => {
   test('login creates RECEIVE_CURRENT_USER after posting a new Session', () => {
     const store = mockStore({ user });
     const expectedAction = [{
-        type: actions.LOGOUT_CURRENT_USER
+        type: SessionActions.LOGOUT_CURRENT_USER
       }];
 
     ApiUtil.deleteSession = jest.fn(() => {
       return Promise.resolve(user);
     });
 
-    return store.dispatch(actions.logout()).then(() => {
+    return store.dispatch(SessionActions.logout()).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
