@@ -12,12 +12,6 @@ const user = {
   email: 'EmilyBronte@gondal.gov'
 }
 
-const newUser = {
-  username: 'TheLastTycoon',
-  password: 'Zelda1Flapper',
-  email: 'ffitzgerald@pg.com'
-}
-
 describe('simple action creators', () => {
   test('receiveCurrentUser should create an action to receive current user', () => {
     const expectedAction = {
