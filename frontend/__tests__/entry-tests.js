@@ -33,8 +33,8 @@ describe('entry', () => {
   });
 
   it('queries for and renders into the root div', () => {
-    expect(document.getElementById).toBeCalledWith("root");
-    expect(ReactDOM.render.mock.calls[0][1]).toEqual("root");
+    expect(document.getElementById).toBeCalledWith('root');
+    expect(ReactDOM.render.mock.calls[0][1]).toEqual('root');
   })
 
   it('invokes the configureStore function', () => {
