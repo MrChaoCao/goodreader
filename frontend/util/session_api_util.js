@@ -1,6 +1,6 @@
 export const postSession = user => (
   $.ajax({
-    method: "POST",
+    method: 'POST',
     url: `api/session`,
     data: { user }
   })
@@ -8,7 +8,7 @@ export const postSession = user => (
 
 export const deleteSession = () => (
   $.ajax({
-    method: "DELETE",
-    url: `api/sessions`
+    method: 'DELETE',
+    url: `api/session`
   })
 );

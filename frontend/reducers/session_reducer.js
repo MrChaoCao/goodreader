@@ -8,7 +8,7 @@ const _nullSession = {
     currentUser: null,
   },
   errors: {
-    session: ["Invald Credentials"]
+    session: ['Invald Credentials']
   }
 };
 
