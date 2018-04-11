@@ -3,22 +3,17 @@ import {
   LOGOUT_CURRENT_USER,
 } from '../actions/session_actions';
 
-const _nullSession = {
-  session: {
-    currentUser: null,
-  },
-  errors: {
-    session: ['Invald Credentials']
-  }
+const _nullUser = {
+  currentUser: null,
 };
 
-export default(state = _nullSession, action) => {
+export default(state = _nullUser, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign({}, { currentUser: action.payload.user });
+      return Object.assign({}, { currentUser: action.payload });
     case LOGOUT_CURRENT_USER:
-      return _nullSession;
+      return _nullUser;
     default:
       return state;
   }
