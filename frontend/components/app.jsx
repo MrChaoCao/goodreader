@@ -9,6 +9,8 @@ import {
 } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
+import SessionFormContainer from './session/session_form_container';
+
 const App = () => (
   <div>
     <Link to="/" className="">
@@ -16,8 +18,9 @@ const App = () => (
     </Link>
 
     <Switch>
-      <Route exact path="/"/>
+      <AuthRoute path="/login" component={SessionFormContainer}/>
       <Route render={ () => <Redirect to="/"/> } />
+      <Route exact path="/"/>
     </Switch>
   </div>
 )
