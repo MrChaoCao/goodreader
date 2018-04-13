@@ -18,7 +18,8 @@ const App = () => (
     </Link>
 
     <Switch>
-      <AuthRoute path="/login" component={SessionFormContainer}/>
+      <AuthRoute path="/sign_in" component={SessionFormContainer}/>
+      <AuthRoute path="/sign_up" component={SessionFormContainer}/>
       <Route render={ () => <Redirect to="/"/> } />
       <Route exact path="/"/>
     </Switch>

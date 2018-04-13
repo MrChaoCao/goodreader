@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({ user });
+    this.props.formAction({ user });
   }
 
   navLink() {
@@ -42,9 +42,20 @@ class SessionForm extends React.Component {
       <div className="session-form-container">
         <form onSubmit={ this.handleSubmit } className="session-form-box">
           <div className="session-form">
-            Welcome
             <br/>
-            { this.props.formType }
+              {
+                this.props.formType === "sign_up" &&
+                <div>
+                  Sign up for Goodreader
+                </div>
+              }
+              {
+                this.props.formType === "sign_in" &&
+                <div>
+                  Sign in to Goodreader
+                </div>
+              }
+            <br/>
             <label>Username:
                 <input
                   type="text"
@@ -54,14 +65,17 @@ class SessionForm extends React.Component {
                   />
             </label>
             <br/>
-              <label>Email Address:
-                  <input
-                    type="text"
-                    value={ this.state.email }
-                    onChange={ this.update('email') }
-                    className="session-input"
-                    />
-              </label>
+              {
+                this.props.formType === "sign_up" &&
+                <label>Email Address:
+                    <input
+                      type="text"
+                      value={ this.state.email }
+                      onChange={ this.update('email') }
+                      className="session-input"
+                      />
+                </label>
+              }
             <br/>
             <label>Password:
               <input
@@ -72,7 +86,21 @@ class SessionForm extends React.Component {
                 />
             </label>
             <br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Sign in" />
+            {
+              this.props.formType === "sign_up" &&
+              <div>
+                Already a member?
+                <Link to="/sign_in">Sign in</Link>
+              </div>
+            }
+            {
+              this.props.formType === "sign_in" &&
+              <div>
+                Not a member?
+                <Link to="/sign_up">Sign up</Link>
+              </div>
+            }
           </div>
         </form>
       </div>
