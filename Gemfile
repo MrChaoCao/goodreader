@@ -30,6 +30,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-github'
+gem 'omniauth-gplus'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
